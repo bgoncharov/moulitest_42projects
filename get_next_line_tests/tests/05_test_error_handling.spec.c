@@ -14,6 +14,10 @@ static void simple_string(t_test *test)
 
 	/* Not opened fd */
 	mt_assert(get_next_line(42, &line) == -1);
+
+	/* Too large fd */
+	mt_assert(get_next_line(10000000, NULL) == -1);
+	mt_assert(get_next_line(10000000, &line) == -1);
 }
 
 void	suite_05_test_error_handling(t_suite *suite)
